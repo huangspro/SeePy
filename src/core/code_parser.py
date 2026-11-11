@@ -134,5 +134,7 @@ class FuncFlowParser(BaseCodeParser):
             if isinstance(node, ast.FunctionDef) or isinstance(node, ast.AsyncFunctionDef):
                 self.func_flow.append({node.name: node.body})
 
+        return self.func_flow
+    
     def print_result(self):
         print(self.func_flow)
