@@ -112,7 +112,7 @@ class ClassExtensionParser(BaseCodeParser):
                     )
                 )
 
-        return self.class_net
+            return self.class_net
 
     def print_result(self):
         if self.class_net is None:
@@ -136,7 +136,7 @@ class FuncFlowParser(BaseCodeParser):
             ):
                 self.func_flow.append({node.name: node.body})
 
-        return self.func_flow
+            return self.func_flow
 
     def print_result(self):
         print(self.func_flow)
