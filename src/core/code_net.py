@@ -5,38 +5,24 @@ from src.core.load_py_file import load
 
 class CodeNet:
     def __init__(self):
-        self.net = []
+        self.class_net = []
+        self.func_net = []
+        self.module_net = []
 
+    def add_node(self, node, node_type):
+        if node is None:
+            return
+        if node_type == "class":
+            self.class_net.append(node)
+        if node_type == "func":
+            self.func_net.append(node)
+        if node_type == "module":
+            self.module_net.append(node)
+
+    def merge(self, other_net):
+        self.class_net += other_net.class_net
+        self.func_net += other_net.func_net
+        self.module_net += other_net.module_net
 
     def is_empty(self):
-        return self.net == None
-
-    def add_tree(self, node):
-        self.net.append(node)
-
-    def parse_code_text(self, code: str):
-        try:
-            return ast.parse(code)
-        except Exception as e:
-            return None
-
-    def parse_project(self, project_path: str):
-        if not os.path.exists(project_path):
-            return None
-
-        def get_file(net:CodeNet, file_name: str):
-            if os.path.isfile(file_name):
-                code_text = load(file_name)
-                if code_text is not None:
-                    tem = self.parse_code_text(code_text)
-                    if tem is not None:
-                        net.add_tree(tem)
-
-            elif os.path.isdir(file_name):
-                for root, dirs, files in os.walk(file_name):
-                    for file in files:
-                        get_file(net, os.path.join(root, file))
-                    for dir in dirs:
-                        get_file(net, os.path.join(root, dir))
-
-        get_file(self, project_path)
+        return self.class_net == [] and self.func_net == [] and self.module_net == []
