@@ -25,7 +25,7 @@ class BaseCodeParser(ABC):
         pass
 
 
-class ClassExtensionParser(BaseCodeParser):
+class ClassParser(BaseCodeParser):
     def __init__(self, code_text: str):
         BaseCodeParser.__init__(self, code_text)
         self.class_net = {}
@@ -121,7 +121,7 @@ class ClassExtensionParser(BaseCodeParser):
             print(self.class_net)
 
 
-class FuncFlowParser(BaseCodeParser):
+class FuncParser(BaseCodeParser):
     def __init__(self, code_text: str):
         BaseCodeParser.__init__(self, code_text)
         self.func_flow = []
