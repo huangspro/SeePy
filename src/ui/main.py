@@ -9,7 +9,7 @@ from PySide6.QtWidgets import QGraphicsRectItem
 from abc import ABC, abstractmethod
 
 
-class Shape(ABC):
+class Shape:
 
     def __init__(
         self,
@@ -35,7 +35,6 @@ class Shape(ABC):
         self.text_width = self.metrics.horizontalAdvance(text)
         self.text_height = self.metrics.height()
 
-    @abstractmethod
     def draw(self):
         pass
 
@@ -222,13 +221,19 @@ class MainWindow(QMainWindow):
             self.scene,
             300,
             200,
-            "开始节点"
+            "开始节dghdthdgjsdsfnjjsd点"
         )
-
         rect.draw()
+        ok = Prismatic(
+            self.scene,
+            100,200,"hahahhakuhgbisjjflijsfg"
+        )
+        ok.draw()
 
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
 
-tem = MainWindow("ok", 400,400)
-tem.show()
+    tem = MainWindow("ok", 400, 400)
+    tem.show()
 
-
+    sys.exit(app.exec())
