@@ -1,11 +1,15 @@
 import os
+from pathlib import Path
 
 
 def load(file_path):
-    if ".py" not in file_path:
+    path = Path(file_path)
+
+    if path.suffix.lower() != ".py":
         return None
-    if os.path.exists(file_path):
-        with open(file_path) as f:
-            return f.read()
-    else:
-        raise FileNotFoundError
+
+    if not path.is_file():
+        raise FileNotFoundError(file_path)
+
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()

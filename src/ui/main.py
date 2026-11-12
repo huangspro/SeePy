@@ -1,7 +1,13 @@
 import sys
 from abc import abstractmethod, ABC
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QGraphicsPolygonItem
+from PySide6.QtWidgets import (
+    QApplication,
+    QMainWindow,
+    QGraphicsView,
+    QGraphicsScene,
+    QGraphicsPolygonItem,
+)
 from PySide6.QtGui import QPen, QBrush, QColor, QFont, QFontMetricsF, QColor, QPolygonF
 from PySide6.QtCore import Qt, QPointF
 from PySide6.QtWidgets import QGraphicsRectItem
@@ -39,7 +45,6 @@ class Shape:
         pass
 
 
-
 class Rect(Shape, QGraphicsRectItem):
 
     def __init__(
@@ -52,10 +57,7 @@ class Rect(Shape, QGraphicsRectItem):
         boundary_color=Qt.GlobalColor.yellow,
         moveable: bool = True,
     ):
-        Shape.__init__(
-            self, scene, x, y, text,
-            color, boundary_color, moveable
-        )
+        Shape.__init__(self, scene, x, y, text, color, boundary_color, moveable)
         QGraphicsRectItem.__init__(self)
 
         self.padding_x = 10
@@ -67,31 +69,18 @@ class Rect(Shape, QGraphicsRectItem):
     def draw(self):
 
         # 设置矩形
-        self.setRect(
-            0, 0,
-            self.width,
-            self.height
-        )
+        self.setRect(0, 0, self.width, self.height)
 
         # 设置位置，以中心为定位
-        self.setPos(
-            self.x - self.width / 2,
-            self.y - self.height / 2
-        )
+        self.setPos(self.x - self.width / 2, self.y - self.height / 2)
 
         # 设置边框和填充
         self.setPen(QPen(self.color, 2))
         self.setBrush(QBrush(self.boundary_color))
 
         # 设置交互
-        self.setFlag(
-            self.GraphicsItemFlag.ItemIsSelectable,
-            self.moveable
-        )
-        self.setFlag(
-            self.GraphicsItemFlag.ItemIsMovable,
-            self.moveable
-        )
+        self.setFlag(self.GraphicsItemFlag.ItemIsSelectable, self.moveable)
+        self.setFlag(self.GraphicsItemFlag.ItemIsMovable, self.moveable)
 
         # 添加到场景
         self.scene.addItem(self)
@@ -113,19 +102,13 @@ class Rect(Shape, QGraphicsRectItem):
         text_x = (rect.width() - text_rect.width()) / 2
         text_y = (rect.height() - text_rect.height()) / 2
 
-        painter.drawText(
-            int(text_x),
-            int(text_y),
-            self.text
-        )
-
-
+        painter.drawText(int(text_x), int(text_y), self.text)
 
 
 class Prismatic(QGraphicsPolygonItem):
     def __init__(
         self,
-            scene,
+        scene,
         x: int,
         y: int,
         text: str,
@@ -217,18 +200,11 @@ class MainWindow(QMainWindow):
         # background
         self.scene.setBackgroundBrush(QColor(245, 245, 245))
 
-        rect = Rect(
-            self.scene,
-            300,
-            200,
-            "开始节dghdthdgjsdsfnjjsd点"
-        )
+        rect = Rect(self.scene, 300, 200, "开始节dghdthdgjsdsfnjjsd点")
         rect.draw()
-        ok = Prismatic(
-            self.scene,
-            100,200,"hahahhakuhgbisjjflijsfg"
-        )
+        ok = Prismatic(self.scene, 100, 200, "hahahhakuhgbisjjflijsfg")
         ok.draw()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
