@@ -37,7 +37,11 @@ def parse_project(project_path: str):
             code_text = load(file_name)
             if code_text is not None:
                 parse_code_text(
-                    net, ast.parse(code_text), [os.path.splitext(os.path.basename(file_name))[0]],[],[]
+                    net,
+                    ast.parse(code_text),
+                    [os.path.splitext(os.path.basename(file_name))[0]],
+                    [],
+                    [],
                 )
 
         elif os.path.isdir(file_name):
@@ -46,7 +50,6 @@ def parse_project(project_path: str):
                     get_file(net, os.path.join(root, file))
                 for dir in dirs:
                     get_file(net, os.path.join(root, dir))
+
     get_file(net, project_path)
     return net
-
-
