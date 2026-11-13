@@ -15,3 +15,13 @@ class ParseFailed(Event):
 class ParseSuccess(Event):
     def __init__(self, data):
         Event.__init__(self, "ParseSuccess", data)
+
+
+class UIPrepared(Event):
+    def __init__(self, data):
+        Event.__init__(self, "UIPrepared", data)
+
+
+class TargetNotFound(Event):
+    def __init__(self, data):
+        Event.__init__(self, "TargetNotFound", data)

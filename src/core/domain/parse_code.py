@@ -8,7 +8,7 @@ from src.core.domain.code_net import Node
 
 
 def parse_code_text(
-    net, node, module_scope: list, class_scope: list, function_scope: list
+    net, node: ast.AST, module_scope: list, class_scope: list, function_scope: list
 ):
     for item in node.body:
         if isinstance(item, ast.FunctionDef) or isinstance(item, ast.AsyncFunctionDef):

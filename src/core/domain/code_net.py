@@ -1,11 +1,14 @@
+import ast
+
+
 class Node:
     def __init__(
         self, ast_node, module_scope: list, class_scope: list, function_scope: list
     ):
         self.ast_node = ast_node
-        self.module_scope = module_scope
-        self.class_scope = class_scope
-        self.function_scope = function_scope
+        self.module_scope: list[str] = module_scope
+        self.class_scope: list[str] = class_scope
+        self.function_scope: list[str] = function_scope
 
     def add_scope(self, scope_type, scope):
         if scope_type == "module":
