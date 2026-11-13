@@ -47,3 +47,10 @@ class MessageBus:
 
 # instantiate a message bus as a global bus
 message_bus = MessageBus()
+
+
+def listen(event_name):
+    def decorator(handler):
+        message_bus.subscribe(event_name, handler)
+
+    return decorator

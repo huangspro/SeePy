@@ -21,6 +21,12 @@ class Node:
     def get_scope(self):
         return f"module: {self.module_scope}\nclass: {self.class_scope}\nfunction: {self.function_scope}"
 
+    def equal(self, other_scope):
+        return (
+            self.module_scope == other_scope["module_scope"]
+            and self.class_scope == other_scope["class_scope"]
+        )
+
 
 class CodeNet:
     def __init__(self):

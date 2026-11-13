@@ -25,3 +25,8 @@ class UIPrepared(Event):
 class TargetNotFound(Event):
     def __init__(self, data):
         Event.__init__(self, "TargetNotFound", data)
+
+
+class ChartChanged(Event):
+    def __init__(self, data):
+        Event.__init__(self, "ChartChanged", data)
