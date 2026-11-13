@@ -1,8 +1,3 @@
-import ast
-import os
-from src.core.load_py_file import load
-
-
 class Node:
     def __init__(
         self, ast_node, module_scope: list, class_scope: list, function_scope: list

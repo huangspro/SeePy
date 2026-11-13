@@ -3,7 +3,7 @@ import dash_cytoscape as cyto
 from src.ui.ui_node import BaseFlowNode, Edge
 
 
-class FlowDrawer:
+class FlowChart:
     def __init__(
         self,
         layout_name="grid",
@@ -142,7 +142,7 @@ class FlowDrawer:
         app.run(debug=True)
 
 
-class ClassDrawer:
+class ClassChart:
     def __init__(
         self,
         layout_name="grid",
