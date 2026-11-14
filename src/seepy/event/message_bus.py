@@ -27,7 +27,6 @@ class MessageBus:
     def post(self, event):
         self.event_queue.put(event)
 
-
     # put None into the event queue
     def end_event_handler(self):
         self.event_queue.put(None)
@@ -36,8 +35,10 @@ class MessageBus:
     def handle_events(self):
         while True:
             # get() function will block the thread until the queue is not empty
+            print("num", self.event_queue.qsize())
             event = self.event_queue.get()
             if event is None:
+                print("no event")
                 return
             if event.name in self.events.keys():
                 for subscriber in self.events[event.name]:

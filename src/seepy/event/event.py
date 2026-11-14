@@ -7,14 +7,15 @@ class Event(ABC):
         self.data = data
 
 
-
 class ParseFailed(Event):
     def __init__(self, data):
         Event.__init__(self, "ParseFailed", data)
 
+
 class OnStart(Event):
     def __init__(self, data):
         Event.__init__(self, "OnStart", data)
+
 
 class ParseSuccess(Event):
     def __init__(self, data):

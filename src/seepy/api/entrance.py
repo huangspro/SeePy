@@ -13,5 +13,4 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-print(1)
 message_bus.post(OnStart({"path": args.path, "ui_type": args.type}))
