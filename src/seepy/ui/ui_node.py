@@ -85,3 +85,30 @@ class Edge:
                 "label": self.label,
             }
         }
+
+
+import ast
+
+AST_TO_FLOW_NODE = {
+    ast.Module: StartNode,
+    ast.Return: ReturnNode,
+    ast.If: ConditionalNode,
+    ast.IfExp: ConditionalNode,
+    ast.For: LoopNode,
+    ast.AsyncFor: LoopNode,
+    ast.While: LoopNode,
+    ast.Break: BreakNode,
+    ast.Continue: ContinueNode,
+    ast.FunctionDef: FunctionDefNode,
+    ast.AsyncFunctionDef: FunctionDefNode,
+    ast.Call: FunctionCallNode,
+    ast.Raise: ExceptionNode,
+    ast.Try: ExceptionNode,
+    ast.Assign: CommonNode,
+    ast.AnnAssign: CommonNode,
+    ast.AugAssign: CommonNode,
+    ast.Expr: CommonNode,
+    ast.Import: CommonNode,
+    ast.ImportFrom: CommonNode,
+    ast.Pass: CommonNode,
+}

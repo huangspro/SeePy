@@ -27,6 +27,7 @@ class MessageBus:
     def post(self, event):
         self.event_queue.put(event)
 
+
     # put None into the event queue
     def end_event_handler(self):
         self.event_queue.put(None)
@@ -36,10 +37,8 @@ class MessageBus:
         while True:
             # get() function will block the thread until the queue is not empty
             event = self.event_queue.get()
-
             if event is None:
                 return
-
             if event.name in self.events.keys():
                 for subscriber in self.events[event.name]:
                     subscriber(event.data)
@@ -51,6 +50,8 @@ message_bus = MessageBus()
 
 def listen(event_name):
     def decorator(handler):
+        print("subscribe", event_name, handler.__name__)
         message_bus.subscribe(event_name, handler)
+        return handler
 
     return decorator

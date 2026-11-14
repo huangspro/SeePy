@@ -1,6 +1,7 @@
 import argparse
-
-from src.core.domain.parse_code import *
+from seepy.event.message_bus import *
+from seepy.event.event import *
+from seepy.application import load_project
 
 parser = argparse.ArgumentParser(description="SeePy arguments")
 
@@ -12,9 +13,5 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-if args.path and args.type in ["flow", "class"]:
-    parse_output = parse_project(args.path)
-    if args.type == "flow":
-        extract = parse_output.func_net
-    else:
-        extract = parse_output.class_net
+print(1)
+message_bus.post(OnStart({"path": args.path, "ui_type": args.type}))

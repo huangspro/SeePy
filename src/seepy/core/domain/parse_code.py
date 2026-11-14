@@ -2,9 +2,9 @@ import ast
 import os
 from copy import deepcopy
 
-from src.core.utils.load_py_file import load
-from src.core.domain.code_net import CodeNet
-from src.core.domain.code_net import Node
+from seepy.core.utils.load_py_file import load
+from seepy.core.domain.code_net import CodeNet
+from seepy.core.domain.code_net import Node
 
 
 def parse_code_text(

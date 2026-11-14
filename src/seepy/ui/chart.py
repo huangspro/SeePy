@@ -1,6 +1,6 @@
-from dash import Dash, html, Input, Output, State
+from dash import Dash, html
 import dash_cytoscape as cyto
-from src.ui.ui_node import BaseFlowNode, Edge
+from seepy.ui.ui_node import BaseFlowNode, Edge
 
 
 class FlowChart:
